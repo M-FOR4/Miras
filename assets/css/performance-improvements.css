@@ -1,0 +1,93 @@
+/* Performance Optimizations */
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Reduce Large Text Sizes */
+.hero p {
+    font-size: clamp(1rem, 2vw, 1.125rem) !important;
+}
+
+.section h2 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem) !important;
+}
+
+.section p {
+    font-size: clamp(0.95rem, 1.5vw, 1.05rem) !important;
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Will-change for animated elements */
+.card,
+.btn,
+.nav-link {
+    will-change: transform;
+}
+
+/* Lazy Load Images */
+img[loading="lazy"] {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+img[loading="lazy"].loaded {
+    opacity: 1;
+}
+
+/* Grid Improvements for Impact Section */
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+    .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .grid-4 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Better Stats Display */
+.stat-card {
+    background: var(--color-bg-body);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.75rem !important;
+    font-weight: 700;
+    margin: 1rem 0 0.5rem;
+    line-height: 1;
+}
+
+.stat-label {
+    font-weight: 600;
+    color: var(--color-text-main);
+    margin: 0;
+}
