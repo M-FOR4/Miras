@@ -1,0 +1,75 @@
+/* Additional Smooth Scroll & Performance Enhancements */
+
+/* Ultra Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+    /* Account for fixed navbar */
+}
+
+/* Reduce scroll jank */
+* {
+    scroll-snap-stop: normal;
+}
+
+/* GPU Acceleration for smoother animations */
+.hero,
+.section,
+.card,
+.btn,
+.nav-link,
+.navbar {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+}
+
+/* Optimize images for performance */
+img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+/* Prevent layout shift during scroll */
+.hero {
+    contain: layout style paint;
+}
+
+/* Smoother transitions */
+* {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Will-change optimization for scrolling elements */
+.navbar {
+    will-change: transform, background-color;
+}
+
+.hero-content {
+    will-change: opacity, transform;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Improve scroll performance on mobile */
+body {
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+}
+
+/* Optimize hero background for scroll */
+.hero::before {
+    will-change: transform;
+    transform: translateZ(0);
+}
