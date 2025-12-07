@@ -1,5 +1,5 @@
 /* =============================================================================
-   MOBILE RESPONSIVE DESIGN - Premium Mobile Experience
+   MOBILE RESPONSIVE DESIGN - Premium Mobile Experience (v2.0)
    ============================================================================= */
 
 /* Tablets and Below (768px) */
@@ -11,11 +11,166 @@
         max-width: 100%;
     }
 
+    /* Navbar Styling */
+    .nav-container {
+        padding: 1rem 1.5rem !important;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+
+    /* Mobile Menu Button (Hamburger) */
+    .mobile-menu-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 20px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        z-index: 1001;
+        /* Above menu */
+        padding: 0;
+    }
+
+    .mobile-menu-btn span {
+        width: 100%;
+        height: 2px;
+        background-color: var(--color-primary-blue);
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+
+    /* Hamburger Animation when Active */
+    .mobile-menu-btn.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 6px);
+        background-color: white;
+        /* White on dark menu */
+    }
+
+    .mobile-menu-btn.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .mobile-menu-btn.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -6px);
+        background-color: white;
+    }
+
+    /* Side Drawer Menu (Overlay) */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        /* Hidden by default */
+        width: 80%;
+        /* Drawer width */
+        max-width: 300px;
+        height: 100vh;
+        background: var(--color-primary-blue);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        display: flex !important;
+        /* Force flex for layout */
+    }
+
+    .nav-links.active {
+        right: 0;
+        /* Slide in */
+    }
+
+    /* Menu Overlay Backdrop */
+    .nav-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(3px);
+    }
+
+    .nav-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Menu Links Styling */
+    .nav-links li {
+        margin: 1.5rem 0;
+        width: 100%;
+        text-align: center;
+        opacity: 0;
+        transform: translateX(20px);
+        transition: all 0.3s ease;
+    }
+
+    .nav-links.active li {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /* Stagger Animation for Links */
+    .nav-links.active li:nth-child(1) {
+        transition-delay: 0.1s;
+    }
+
+    .nav-links.active li:nth-child(2) {
+        transition-delay: 0.2s;
+    }
+
+    .nav-links.active li:nth-child(3) {
+        transition-delay: 0.3s;
+    }
+
+    .nav-links.active li:nth-child(4) {
+        transition-delay: 0.4s;
+    }
+
+    .nav-links.active li:nth-child(5) {
+        transition-delay: 0.5s;
+    }
+
+    .nav-link {
+        color: white !important;
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+
+    .nav-link.active::after {
+        background: var(--color-accent-green);
+        /* Green underline on dark bg */
+    }
+
+    /* Hide "Contact Us" button in navbar on mobile (optional, or move to menu) */
+    .nav-container .btn-primary {
+        display: none;
+        /* Hide desktop button */
+    }
+
+    /* Add Contact Button inside Menu */
+    .nav-links .btn-mobile-only {
+        display: block;
+        margin-top: 2rem;
+        width: 100%;
+        text-align: center;
+    }
+
     /* Hero Section */
     .hero {
         min-height: auto;
         padding: 8rem 0 4rem;
-        /* More top padding for navbar */
     }
 
     .hero-content {
@@ -34,42 +189,12 @@
         margin-bottom: 2rem !important;
     }
 
-    /* Navbar */
-    .nav-container {
-        padding: 1rem 1.5rem !important;
-    }
-
-    .nav-links {
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: var(--color-primary-dark);
-        display: none;
-        padding: 1rem;
-        box-shadow: var(--shadow-lg);
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .nav-links li {
-        margin: 0.5rem 0;
-        width: 100%;
-        text-align: center;
-    }
-
     /* Fix Icons Distortion */
     svg {
         height: auto !important;
         width: 40px !important;
-        /* Fixed width */
         min-width: 40px;
-        /* Prevent shrinking */
         flex-shrink: 0;
-        /* Prevent squeezing */
         object-fit: contain;
     }
 
@@ -83,7 +208,6 @@
         gap: 1.5rem !important;
     }
 
-    /* Ensure 2 columns on tablet */
     .grid[style*="repeat(2, 1fr)"] {
         grid-template-columns: repeat(2, 1fr) !important;
     }
@@ -92,7 +216,6 @@
     .card {
         padding: 2rem 1.5rem !important;
         height: 100%;
-        /* Equal height */
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -134,34 +257,29 @@
     /* Fix Icons specifically for mobile */
     .card svg {
         width: 32px !important;
-        /* Slightly smaller on mobile */
         height: 32px !important;
         min-width: 32px;
         margin-bottom: 0.5rem;
     }
 
-    /* Impact Section - 2x2 Grid on Mobile too (as requested) */
+    /* Impact Section - 2x2 Grid on Mobile too */
     .grid[style*="repeat(2, 1fr)"] {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 0.75rem !important;
-        /* Smaller gap for mobile */
     }
 
     /* Card adjustments for 2x2 mobile grid */
     .card {
         padding: 1rem 0.5rem !important;
-        /* Very compact padding */
     }
 
     .stat-number {
         font-size: 1.5rem !important;
-        /* Smaller numbers */
         line-height: 1.2;
     }
 
     .card p {
         font-size: 0.8rem !important;
-        /* Smaller text */
         margin-top: 0.25rem;
         font-weight: 500 !important;
     }

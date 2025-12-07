@@ -10,6 +10,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Mobile Menu Toggle
+    const mobileBtn = document.querySelector('.mobile-menu-btn');
+    const navLinksContainer = document.querySelector('.nav-links');
+    const navOverlay = document.querySelector('.nav-overlay');
+    const navLinksItems = document.querySelectorAll('.nav-link');
+
+    function toggleMenu() {
+        mobileBtn.classList.toggle('active');
+        navLinksContainer.classList.toggle('active');
+        navOverlay.classList.toggle('active');
+        document.body.style.overflow = mobileBtn.classList.contains('active') ? 'hidden' : '';
+    }
+
+    if (mobileBtn) {
+        mobileBtn.addEventListener('click', toggleMenu);
+        navOverlay.addEventListener('click', toggleMenu);
+
+        // Close menu when clicking a link
+        navLinksItems.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinksContainer.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+        });
+    }
+
     // Active Navigation Link based on Scroll Position (Scroll Spy)
     const sections = document.querySelectorAll('section[id], header[id]');
     const navLinks = document.querySelectorAll('.nav-link');
