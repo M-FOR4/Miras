@@ -1,5 +1,5 @@
 /* =============================================================================
-   MOBILE RESPONSIVE DESIGN - Premium Mobile Experience (v2.1 - Stable)
+   MOBILE RESPONSIVE DESIGN - Clean & Stable Version
    ============================================================================= */
 
 /* Tablets and Below (768px) */
@@ -11,166 +11,72 @@
         max-width: 100%;
     }
 
-    /* Navbar Styling */
+    /* Navbar Styling - Clean Stacked Layout */
     .nav-container {
         padding: 1rem 1.5rem !important;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
+        flex-direction: column;
+        gap: 1rem;
     }
 
-    /* Mobile Menu Button (Hamburger) */
-    .mobile-menu-btn {
+    .logo img {
+        height: 50px !important;
+        /* Smaller logo for mobile */
+    }
+
+    /* Improved Navigation Links (Visible & Tappable) */
+    .nav-links {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        width: 30px;
-        height: 20px;
+        width: 100%;
+        gap: 0.5rem;
         background: transparent;
-        border: none;
-        cursor: pointer;
-        z-index: 1001;
-        /* Above menu */
+        box-shadow: none;
+        position: static;
+        /* No hiding, always visible */
         padding: 0;
     }
 
-    .mobile-menu-btn span {
-        width: 100%;
-        height: 2px;
-        background-color: var(--color-primary-blue);
-        border-radius: 2px;
-        transition: all 0.3s ease;
-    }
-
-    /* Hamburger Animation when Active */
-    .mobile-menu-btn.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 6px);
-        background-color: white;
-        /* White on dark menu */
-    }
-
-    .mobile-menu-btn.active span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .mobile-menu-btn.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -6px);
-        background-color: white;
-    }
-
-    /* Side Drawer Menu (Overlay) */
-    .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        /* Hidden by default */
-        width: 80%;
-        /* Drawer width */
-        max-width: 300px;
-        height: 100vh;
-        background: var(--color-primary-blue);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 2rem;
-        transition: right 0.3s ease-in-out, visibility 0.3s;
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
-        display: flex !important;
-        /* Force flex for layout */
-        visibility: hidden;
-        /* Hide completely when closed */
-    }
-
-    .nav-links.active {
-        right: 0;
-        /* Slide in */
-        visibility: visible;
-        /* Show when active */
-    }
-
-    /* Menu Overlay Backdrop */
-    .nav-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 999;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-        backdrop-filter: blur(3px);
-    }
-
-    .nav-overlay.active {
-        opacity: 1;
-        visibility: visible;
-    }
-
-    /* Menu Links Styling */
     .nav-links li {
-        margin: 1.5rem 0;
         width: 100%;
         text-align: center;
-        /* Removed opacity: 0 to ensure visibility */
-        transform: none;
-    }
-
-    .nav-links.active li {
-        opacity: 1;
-        transform: none;
     }
 
     .nav-link {
-        color: white !important;
-        font-size: 1.2rem;
-        font-weight: 600;
-    }
-
-    .nav-link.active::after {
-        background: var(--color-accent-green);
-        /* Green underline on dark bg */
-    }
-
-    /* Hide "Contact Us" button in navbar on mobile */
-    .nav-container .btn-primary {
-        display: none;
-    }
-
-    /* Add Contact Button inside Menu */
-    .nav-links .btn-mobile-only {
         display: block;
-        margin-top: 2rem;
-        width: 100%;
-        text-align: center;
+        padding: 0.75rem;
+        background-color: rgba(30, 53, 131, 0.05);
+        /* Light blue background */
+        border-radius: 8px;
+        color: var(--color-primary-blue) !important;
+        font-weight: 600;
+        transition: all 0.2s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+        background-color: var(--color-primary-blue);
+        color: white !important;
     }
 
     /* Hero Section */
     .hero {
         min-height: auto;
-        padding: 8rem 0 4rem;
-    }
-
-    .hero-content {
+        padding: 3rem 0 3rem;
         text-align: center;
-        padding: 0 1rem;
     }
 
     .hero h1 {
-        font-size: 2.25rem !important;
+        font-size: 2rem !important;
         line-height: 1.3;
         margin-bottom: 1rem !important;
     }
 
     .hero p {
-        font-size: 1.1rem !important;
+        font-size: 1rem !important;
         margin-bottom: 2rem !important;
     }
 
-    /* Fix Icons Distortion */
+    /* Fix Icons Distortion (Critical) */
     svg {
         height: auto !important;
         width: 40px !important;
@@ -181,12 +87,12 @@
 
     /* Sections */
     .section {
-        padding: 4rem 0 !important;
+        padding: 3rem 0 !important;
     }
 
-    /* Cards Grid - Keep 2x2 on Tablets */
+    /* Cards Grid - Keep 2x2 on Tablets & Mobile */
     .grid {
-        gap: 1.5rem !important;
+        gap: 1rem !important;
     }
 
     .grid[style*="repeat(2, 1fr)"] {
@@ -195,7 +101,7 @@
 
     /* Cards Styling */
     .card {
-        padding: 2rem 1.5rem !important;
+        padding: 1.5rem 1rem !important;
         height: 100%;
         display: flex;
         flex-direction: column;
@@ -206,10 +112,12 @@
     /* Footer */
     .footer {
         padding: 3rem 0 2rem !important;
+        text-align: center;
     }
 
     .footer .grid-3 {
-        text-align: center;
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
     }
 
     .social-links {
@@ -227,12 +135,8 @@
     }
 
     /* Hero */
-    .hero {
-        padding: 7rem 0 3rem;
-    }
-
     .hero h1 {
-        font-size: 1.85rem !important;
+        font-size: 1.75rem !important;
     }
 
     /* Fix Icons specifically for mobile */
@@ -269,16 +173,6 @@
     .btn {
         width: 100%;
         padding: 0.8rem 1.5rem !important;
-    }
-
-    /* Footer */
-    .footer {
-        text-align: center;
-    }
-
-    .footer .grid-3 {
-        grid-template-columns: 1fr !important;
-        gap: 2rem !important;
     }
 }
 
