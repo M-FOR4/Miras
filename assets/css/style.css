@@ -406,22 +406,199 @@ h3 {
     margin-top: 1.5rem;
 }
 
-.social-link {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+.social-link:hover {
+    background: var(--color-accent-green);
+    border-color: var(--color-accent-green);
+    transform: translateY(-3px);
+}
+
+/* Footer */
+.footer {
+    background: var(--color-primary-dark);
+    color: var(--color-text-light);
+    padding: var(--space-xl) 0 var(--space-md);
+    position: relative;
+    overflow: hidden;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/logo-white.png');
+    background-repeat: no-repeat;
+    background-position: -10% 120%;
+    background-size: 40%;
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+/* Animations */
+[data-aos] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+[data-aos].aos-animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================
+   FINAL POLISH UPDATES (v7.0)
+   ========================================= */
+
+/* 1. Transparent Header Logic */
+.navbar.transparent {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    border-bottom: none !important;
+}
+
+.navbar.transparent .nav-link {
+    color: white !important;
+}
+
+.navbar.transparent .nav-link::after {
+    background: white !important;
+}
+
+.navbar.transparent .logo img {
+    filter: brightness(0) invert(1);
+    /* White Logo */
+}
+
+padding: 4rem 0 2rem;
+}
+
+.footer a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    color: var(--color-accent-green);
+}
+
+height: 2px;
+background: var(--color-accent-green);
+transition: var(--transition-smooth);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    background-image: var(--gradient-overlay), url('../images/hero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--color-text-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 800px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
     background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-md);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: var(--text-sm);
+    color: var(--color-accent-green);
+}
+
+/* Cards */
+.card {
+    background: var(--color-bg-body);
+    padding: var(--space-md);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-smooth);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    /* Subtle border for definition */
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-accent-green);
+    /* Highlight border on hover */
+}
+
+.card-icon {
+    width: 70px;
+    height: 70px;
+    background: var(--color-bg-light);
+    border-radius: var(--radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: var(--transition-smooth);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: var(--space-md);
+    transition: var(--transition-bounce);
 }
 
-.social-link svg {
-    width: 20px;
-    height: 20px;
-    fill: white;
+.card-icon svg {
+    width: 32px;
+    height: 32px;
+    fill: var(--color-primary-blue);
+    transition: var(--transition-smooth);
+}
+
+.card:hover .card-icon {
+    background: var(--color-primary-blue);
+    transform: scale(1.1) rotate(5deg);
+}
+
+.card:hover .card-icon svg {
+    fill: var(--color-text-light);
+}
+
+/* Stats */
+.stat-card {
+    text-align: center;
+    padding: var(--space-md);
+}
+
+.stat-number {
+    font-size: var(--text-5xl);
+    font-weight: 700;
+    color: var(--color-accent-green);
+    margin-bottom: var(--space-xs);
+    display: block;
+}
+
+/* Social Icons */
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
 }
 
 .social-link:hover {
@@ -464,6 +641,50 @@ h3 {
 [data-aos].aos-animate {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* =========================================
+   FINAL POLISH UPDATES (v7.0)
+   ========================================= */
+
+/* 1. Transparent Header Logic */
+.navbar.transparent {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    border-bottom: none !important;
+}
+
+.navbar.transparent .nav-link {
+    color: white !important;
+}
+
+.navbar.transparent .nav-link::after {
+    background: white !important;
+}
+
+.navbar.transparent .logo img {
+    filter: brightness(0) invert(1);
+    /* White Logo */
+}
+
+.footer-content {
+    padding: 4rem 0 2rem;
+}
+
+.footer a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    color: var(--color-accent-green);
+}
+
+.footer .social-links a {
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s;
 }
 
 /* Responsive */

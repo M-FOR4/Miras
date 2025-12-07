@@ -1,5 +1,6 @@
 /* =============================================================================
-   MOBILE RESPONSIVE DESIGN - Clean & Stable Version
+   MOBILE RESPONSIVE DESIGN - Custom Mobile Experience (v10.0)
+   Focus: User Requests (Blue Menu, Flexible Cards, Side-by-Side Footer, Backgrounds)
    ============================================================================= */
 
 /* Tablets and Below (768px) */
@@ -11,172 +12,279 @@
         max-width: 100%;
     }
 
-    /* Navbar Styling - Clean Stacked Layout */
+    /* Navbar Styling */
+    .navbar {
+        padding: 0.5rem 0 !important;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
     .nav-container {
-        padding: 1rem 1.5rem !important;
-        flex-direction: column;
-        gap: 1rem;
+        padding: 0 1.5rem !important;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
     }
 
+    /* 1. Logo Adjustment */
     .logo img {
-        height: 50px !important;
-        /* Smaller logo for mobile */
+        height: 40px !important;
+        width: auto;
     }
 
-    /* Improved Navigation Links (Visible & Tappable) */
-    .nav-links {
+    /* 2. Mobile Menu Button - Green Hamburger */
+    .mobile-menu-btn {
+        width: 35px;
+        height: 25px;
+        padding: 0;
         display: flex;
         flex-direction: column;
-        width: 100%;
-        gap: 0.5rem;
+        justify-content: space-between;
         background: transparent;
-        box-shadow: none;
-        position: static;
-        /* No hiding, always visible */
-        padding: 0;
+        border: none;
+        cursor: pointer;
+        z-index: 2000;
     }
 
-    .nav-links li {
+    .mobile-menu-btn span {
         width: 100%;
-        text-align: center;
+        height: 3px;
+        background-color: var(--color-accent-green) !important;
+        border-radius: 3px;
+        transition: all 0.3s ease;
     }
 
+    /* Hamburger Animation */
+    .mobile-menu-btn.active span:nth-child(1) {
+        transform: translateY(11px) rotate(45deg);
+    }
+
+    .mobile-menu-btn.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .mobile-menu-btn.active span:nth-child(3) {
+        transform: translateY(-11px) rotate(-45deg);
+    }
+
+    /* Menu Overlay */
+    .nav-links {
+        padding-top: 100px;
+        gap: 2rem;
+        background: rgba(255, 255, 255, 0.98);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        z-index: 1999;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s ease;
+    }
+
+    .nav-links.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Mobile Menu Links - Always Blue */
     .nav-link {
-        display: block;
-        padding: 0.75rem;
-        background-color: rgba(30, 53, 131, 0.05);
-        /* Light blue background */
-        border-radius: 8px;
+        font-size: 1.5rem !important;
+        font-weight: 700;
         color: var(--color-primary-blue) !important;
-        font-weight: 600;
-        transition: all 0.2s ease;
+        /* Force Blue */
     }
 
-    .nav-link:hover,
-    .nav-link.active {
-        background-color: var(--color-primary-blue);
-        color: white !important;
+    /* Ensure transparency doesn't affect mobile menu */
+    .navbar.transparent .nav-links .nav-link {
+        color: var(--color-primary-blue) !important;
     }
 
-    /* Hero Section */
+    /* Hide Desktop Button */
+    .nav-container .btn-primary {
+        display: none !important;
+    }
+
+    /* 3. Hero Section - Custom Phone Background */
     .hero {
-        min-height: auto;
-        padding: 3rem 0 3rem;
+        padding: 8rem 0 4rem !important;
         text-align: center;
+        background-image: url('../images/hero_phone.jpg') !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-attachment: scroll !important;
+    }
+
+    /* Ensure text is readable on custom BG */
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(15, 30, 79, 0.7);
+        /* Darker overlay */
+        z-index: 1;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
     }
 
     .hero h1 {
         font-size: 2rem !important;
+        margin-bottom: 1.5rem !important;
         line-height: 1.3;
-        margin-bottom: 1rem !important;
     }
 
-    .hero p {
-        font-size: 1rem !important;
-        margin-bottom: 2rem !important;
-    }
-
-    /* Fix Icons Distortion (Critical) */
-    svg {
-        height: auto !important;
-        width: 40px !important;
-        min-width: 40px;
-        flex-shrink: 0;
-        object-fit: contain;
-    }
-
-    /* Sections */
+    /* 4. Cards Improvements - Flexible for Mobile */
     .section {
-        padding: 3rem 0 !important;
+        padding: 4rem 0 !important;
     }
 
-    /* Cards Grid - Keep 2x2 on Tablets & Mobile */
+    /* Stack Cards Vertically */
     .grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2rem !important;
+    }
+
+    /* Exception: Stats Grid (2x2) */
+    .grid[style*="repeat(2, 1fr)"] {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
         gap: 1rem !important;
     }
 
-    .grid[style*="repeat(2, 1fr)"] {
-        grid-template-columns: repeat(2, 1fr) !important;
-    }
-
-    /* Cards Styling */
     .card {
-        padding: 1.5rem 1rem !important;
-        height: 100%;
+        padding: 2.5rem 1.5rem !important;
+        width: 100%;
+        max-width: 340px;
+        margin: 0 auto !important;
+        height: auto !important;
+        min-height: 250px;
+        /* Ensure enough height for content */
+        aspect-ratio: auto !important;
+        /* Flexible height */
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        text-align: center !important;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
     }
 
-    /* Footer */
-    .footer {
-        padding: 3rem 0 2rem !important;
-        text-align: center;
-    }
-
-    .footer .grid-3 {
-        grid-template-columns: 1fr !important;
-        gap: 2rem !important;
-    }
-
-    .social-links {
-        justify-content: center !important;
-    }
-}
-
-/* Mobile Phones (480px and below) */
-@media (max-width: 480px) {
-
-    /* Typography */
-    :root {
-        --space-lg: 1.5rem;
-        --space-xl: 2.5rem;
-    }
-
-    /* Hero */
-    .hero h1 {
-        font-size: 1.75rem !important;
-    }
-
-    /* Fix Icons specifically for mobile */
-    .card svg {
-        width: 32px !important;
-        height: 32px !important;
-        min-width: 32px;
-        margin-bottom: 0.5rem;
-    }
-
-    /* Impact Section - 2x2 Grid on Mobile too */
-    .grid[style*="repeat(2, 1fr)"] {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 0.75rem !important;
-    }
-
-    /* Card adjustments for 2x2 mobile grid */
-    .card {
-        padding: 1rem 0.5rem !important;
-    }
-
-    .stat-number {
-        font-size: 1.5rem !important;
-        line-height: 1.2;
-    }
-
-    .card p {
-        font-size: 0.8rem !important;
-        margin-top: 0.25rem;
-        font-weight: 500 !important;
+    /* Fix Icons */
+    svg {
+        width: 45px !important;
+        height: 45px !important;
+        margin-bottom: 1rem !important;
+        object-fit: contain;
     }
 
     /* Buttons */
     .btn {
         width: 100%;
-        padding: 0.8rem 1.5rem !important;
+        max-width: 280px;
+        padding: 0.9rem 1.5rem !important;
+        margin: 0.5rem auto !important;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* 5. Footer - Custom Background & Small Icons */
+    .footer {
+        background-image: url('../images/hero_phone.jpg') !important;
+        background-size: cover !important;
+        background-position: center !important;
+        position: relative;
+        padding: 3rem 0 !important;
+        text-align: center;
+        background-attachment: scroll !important;
+        /* Match Hero */
+    }
+
+    .footer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(15, 30, 79, 0.9) !important;
+        /* Dark Overlay */
+        z-index: 1;
+        /* Ensure it's above image */
+    }
+
+    .footer .container {
+        position: relative;
+        z-index: 2;
+        /* Ensure content is above overlay */
+    }
+
+    /* Footer Layout - Side by Side */
+    .footer .container>div[style*="display: flex"] {
+        flex-direction: row !important;
+        justify-content: center !important;
+        gap: 2rem !important;
+        flex-wrap: wrap;
+    }
+
+    .footer h3 {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .footer ul li,
+    .footer ul li a {
+        font-size: 0.9rem !important;
+    }
+
+    /* Social Icons - SMALL & CENTERED */
+    .footer .social-links {
+        justify-content: center !important;
+        margin-top: 1.5rem !important;
+        gap: 1rem !important;
+        width: 100%;
+    }
+
+    .footer .social-link {
+        width: 35px !important;
+        /* Smaller size */
+        height: 35px !important;
+        background: rgba(255, 255, 255, 0.15) !important;
+    }
+
+    .footer .social-link svg {
+        width: 18px !important;
+        /* Smaller icon */
+        height: 18px !important;
+        margin: 0 !important;
     }
 }
 
-/* Fix for any potential flexbox squeezing */
-.card>div {
-    flex-shrink: 0;
+/* Mobile Phones (480px and below) */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.75rem !important;
+    }
+
+    .card {
+        padding: 2rem 1rem !important;
+        min-height: 180px;
+    }
 }
