@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="assets/css/mobile-responsive.css">
     <link rel="stylesheet" href="assets/css/performance-improvements.css">
     <link rel="stylesheet" href="assets/css/smooth-scroll.css">
+    <link rel="stylesheet" href="assets/css/nav-active-state.css">
     <link rel="icon" href="assets/images/logo.png">
 </head>
 
@@ -52,7 +53,8 @@
     <header id="home" class="hero">
         <div class="container hero-content" data-aos>
             <span class="hero-badge">شريكك في التنمية</span>
-            <h1 class="text-white">نصنع الأثر.. <br> <span class="text-gradient">لمستقبل مستدام</span></h1>
+            <h1 class="text-white" style="margin-bottom: 1.5rem;">نصنع الأثر.. <br> <span class="text-gradient">لمستقبل
+                    مستدام</span></h1>
             <p class="text-white" style="font-size: var(--text-lg); opacity: 0.9;">
                 نقدم حلولاً استشارية مبتكرة تمكن المنظمات من تحقيق أهدافها التنموية وتعظيم أثرها المجتمعي.
             </p>
@@ -148,7 +150,7 @@
                 <h2 style="color: var(--color-primary-blue);">حلول متكاملة</h2>
                 <p style="max-width: 600px; margin: 0 auto;">نقدم خبراتنا لتمكينك من تحقيق أهدافك الاستراتيجية.</p>
             </div>
-            <div class="grid grid-2" style="gap: var(--space-md);">
+            <div class="grid" style="gap: var(--space-md); grid-template-columns: repeat(2, 1fr);">
 
                 <div class="card" data-aos>
                     <div class="card-icon">
@@ -293,8 +295,8 @@
                 <h2 style="color: var(--color-primary-blue);">أرقام وحقائق</h2>
                 <p style="max-width: 600px; margin: 0 auto;">لأننا نؤمن بأن ما لا يمكن قياسه، لا يمكن إدارته.</p>
             </div>
-            <div class="grid grid-2" style="gap: var(--space-lg);">
-                <div class="grid grid-2" style="gap: var(--space-md);">
+            <div style="display: flex; flex-direction: column; gap: 4rem;">
+                <div class="grid" style="gap: var(--space-md); grid-template-columns: repeat(2, 1fr);">
                     <div class="card" style="text-align: center; padding: var(--space-lg);" data-aos>
                         <div style="margin-bottom: 1rem;">
                             <svg style="width: 40px; height: 40px; fill: var(--color-primary-blue);"
@@ -348,7 +350,7 @@
                     </div>
                 </div>
 
-                <div style="display: flex; flex-direction: column; justify-content: center;" data-aos>
+                <div style="max-width: 800px; margin: 0 auto;" data-aos>
                     <h2 style="color: var(--color-primary-blue); margin-bottom: var(--space-sm);">منهجيتنا في القياس
                     </h2>
                     <p style="margin-bottom: var(--space-md);">

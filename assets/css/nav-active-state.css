@@ -1,0 +1,52 @@
+/* Navigation Active State Enhancements */
+
+/* Remove default underline from nav links */
+.nav-link {
+    text-decoration: none !important;
+    position: relative;
+    padding-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+/* Green underline for active link */
+.nav-link.active {
+    color: var(--color-accent-green) !important;
+    position: relative;
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #54d16e 0%, #3db555 100%);
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(84, 209, 110, 0.4);
+}
+
+/* Hover effect for non-active links */
+.nav-link:not(.active):hover {
+    color: rgba(84, 209, 110, 0.8);
+}
+
+.nav-link:not(.active):hover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: rgba(84, 209, 110, 0.5);
+    border-radius: 2px;
+}
+
+/* Make sure the contact button doesn't get underline */
+.btn.btn-primary {
+    text-decoration: none !important;
+}
+
+.btn.btn-primary::after {
+    display: none !important;
+}

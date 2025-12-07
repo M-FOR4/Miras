@@ -1,5 +1,5 @@
 /* =============================================================================
-   MOBILE RESPONSIVE DESIGN - Critical for Mobile-First Experience
+   MOBILE RESPONSIVE DESIGN - Premium Mobile Experience
    ============================================================================= */
 
 /* Tablets and Below (768px) */
@@ -8,24 +8,30 @@
     /* Container Adjustments */
     .container {
         padding: 0 1.5rem !important;
+        max-width: 100%;
     }
 
     /* Hero Section */
     .hero {
-        min-height: 70vh;
-        padding: 6rem 0 4rem;
+        min-height: auto;
+        padding: 8rem 0 4rem;
+        /* More top padding for navbar */
     }
 
     .hero-content {
         text-align: center;
+        padding: 0 1rem;
     }
 
     .hero h1 {
-        font-size: 2.5rem !important;
+        font-size: 2.25rem !important;
+        line-height: 1.3;
+        margin-bottom: 1rem !important;
     }
 
-    .hero-badge {
-        font-size: 0.9rem;
+    .hero p {
+        font-size: 1.1rem !important;
+        margin-bottom: 2rem !important;
     }
 
     /* Navbar */
@@ -55,36 +61,41 @@
         text-align: center;
     }
 
-    /* Grids */
-    .grid-2,
-    .grid-3 {
-        grid-template-columns: 1fr !important;
-        gap: 2rem !important;
+    /* Fix Icons Distortion */
+    svg {
+        height: auto !important;
+        width: 40px !important;
+        /* Fixed width */
+        min-width: 40px;
+        /* Prevent shrinking */
+        flex-shrink: 0;
+        /* Prevent squeezing */
+        object-fit: contain;
     }
 
     /* Sections */
     .section {
-        padding: 3rem 0 !important;
+        padding: 4rem 0 !important;
     }
 
-    /* Cards */
+    /* Cards Grid - Keep 2x2 on Tablets */
+    .grid {
+        gap: 1.5rem !important;
+    }
+
+    /* Ensure 2 columns on tablet */
+    .grid[style*="repeat(2, 1fr)"] {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    /* Cards Styling */
     .card {
-        padding: 1.5rem !important;
-    }
-
-    .card-icon {
-        width: 50px !important;
-        height: 50px !important;
-    }
-
-    /* Impact Stats */
-    .stat-number {
-        font-size: 2rem !important;
-    }
-
-    /* Buttons */
-    .btn {
-        width: 100%;
+        padding: 2rem 1.5rem !important;
+        height: 100%;
+        /* Equal height */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         justify-content: center;
     }
 
@@ -107,103 +118,72 @@
 
     /* Typography */
     :root {
-        --text-5xl: 2rem;
-        --text-4xl: 1.75rem;
-        --text-3xl: 1.5rem;
-        --text-2xl: 1.25rem;
-        --space-lg: 2rem;
-        --space-xl: 3rem;
-    }
-
-    /* Logo */
-    .logo img {
-        height: 50px !important;
+        --space-lg: 1.5rem;
+        --space-xl: 2.5rem;
     }
 
     /* Hero */
     .hero {
-        min-height: 60vh;
-        padding: 5rem 0 3rem;
+        padding: 7rem 0 3rem;
     }
 
     .hero h1 {
-        font-size: 1.75rem !important;
-        line-height: 1.3;
+        font-size: 1.85rem !important;
     }
 
-    .hero p {
-        font-size: 1rem !important;
+    /* Fix Icons specifically for mobile */
+    .card svg {
+        width: 32px !important;
+        /* Slightly smaller on mobile */
+        height: 32px !important;
+        min-width: 32px;
+        margin-bottom: 0.5rem;
     }
 
-    /* Buttons Container */
-    .hero-content>div {
-        flex-direction: column;
-        margin-top: 1.5rem !important;
+    /* Impact Section - 2x2 Grid on Mobile too (as requested) */
+    .grid[style*="repeat(2, 1fr)"] {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.75rem !important;
+        /* Smaller gap for mobile */
     }
 
-    .btn {
-        padding: 0.875rem 1.5rem !important;
-        font-size: 1rem !important;
-    }
-
-    /* Cards */
+    /* Card adjustments for 2x2 mobile grid */
     .card {
-        padding: 1.25rem !important;
+        padding: 1rem 0.5rem !important;
+        /* Very compact padding */
     }
 
-    .card h3 {
-        font-size: 1.125rem !important;
+    .stat-number {
+        font-size: 1.5rem !important;
+        /* Smaller numbers */
+        line-height: 1.2;
     }
 
     .card p {
-        font-size: 0.9rem !important;
+        font-size: 0.8rem !important;
+        /* Smaller text */
+        margin-top: 0.25rem;
+        font-weight: 500 !important;
     }
 
-    /* Spacing */
-    .section {
-        padding: 2rem 0 !important;
+    /* Buttons */
+    .btn {
+        width: 100%;
+        padding: 0.8rem 1.5rem !important;
     }
 
-    /* Impact Numbers */
-    .stat-number {
-        font-size: 1.75rem !important;
+    /* Footer */
+    .footer {
+        text-align: center;
     }
 
-    /* Form Inputs */
-    input,
-    textarea {
-        font-size: 16px !important;
-        /* Prevents zoom on iOS */
-    }
-}
-
-/* Landscape Mobile Phones */
-@media (max-width: 768px) and (orientation: landscape) {
-    .hero {
-        min-height: 100vh;
+    .footer .grid-3 {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
     }
 }
 
-/* High DPI Displays */
-@media (-webkit-min-device-pixel-ratio: 2),
-(min-resolution: 192dpi) {
-
-    /* Optimize images for retina displays */
-    img {
-        image-rendering: -webkit-optimize-contrast;
-    }
-}
-
-/* Dark Mode Support (Optional for future) */
-@media (prefers-color-scheme: dark) {
-    /* Can be implemented later if needed */
-}
-
-/* Reduced Motion for Accessibility */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
+/* Fix for any potential flexbox squeezing */
+.card>div {
+    flex-shrink: 0;
 }

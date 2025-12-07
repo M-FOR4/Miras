@@ -10,6 +10,39 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Active Navigation Link based on Scroll Position (Scroll Spy)
+    const sections = document.querySelectorAll('section[id], header[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    function updateActiveLink() {
+        let current = '';
+        const scrollY = window.pageYOffset;
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+
+            // Check if we're in this section (with some offset for navbar)
+            if (scrollY >= sectionTop - 100) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        // Update active class on nav links
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            const href = link.getAttribute('href');
+
+            if (href === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    // Run on scroll and on load
+    window.addEventListener('scroll', updateActiveLink);
+    updateActiveLink(); // Initial call
+
     // Intersection Observer for Scroll Animations
     const observerOptions = {
         threshold: 0.1,
