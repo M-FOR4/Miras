@@ -1,4 +1,4 @@
-﻿/* MIRAS Premium Design System */
+/* MIRAS Premium Design System */
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700&display=swap');
 
@@ -473,24 +473,6 @@ h3 {
     /* White Logo */
 }
 
-padding: 4rem 0 2rem;
-}
-
-.footer a {
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.footer a:hover {
-    color: var(--color-accent-green);
-}
-
-height: 2px;
-background: var(--color-accent-green);
-transition: var(--transition-smooth);
-}
-
 .nav-link:hover::after,
 .nav-link.active::after {
     width: 100%;
@@ -722,5 +704,17 @@ transition: var(--transition-smooth);
 
     h1 {
         line-height: 1.3;
+    }
+}
+
+/* Samsung Internet / WebKit Arabic Rendering Fix */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+
+    .nav-link,
+    .hero-badge,
+    h2,
+    h3 {
+        line-height: 1.5;
+        padding-bottom: 0.1em;
     }
 }
