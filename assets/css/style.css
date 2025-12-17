@@ -60,6 +60,60 @@
     --transition-bounce: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
+/* Nuking Mobile Touch Highlights */
+*,
+*::before,
+*::after {
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-touch-callout: none !important;
+    /* iOS long press menu */
+}
+
+a,
+button,
+input,
+select,
+textarea,
+div,
+span,
+.card {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+    outline: none !important;
+}
+
+a:focus,
+a:active,
+button:focus,
+button:active,
+input:focus,
+input:active {
+    outline: none !important;
+    box-shadow: none !important;
+    /* Some browsers use shadow for focus */
+    background-color: transparent !important;
+    /* Prevents bg change on native active */
+}
+
+/* Allow text selection only where needed, disable elsewhere */
+body {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+textarea {
+    -webkit-user-select: text;
+    user-select: text;
+}
+
 /* Reset & Base */
 *,
 *::before,
@@ -707,14 +761,119 @@ h3 {
     }
 }
 
-/* Samsung Internet / WebKit Arabic Rendering Fix */
-@media screen and (-webkit-min-device-pixel-ratio:0) {
+/* Social Button with Fill Animation (User Requested) */
+.social-btn {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    /* Contains the green fill */
+    z-index: 1;
+}
 
-    .nav-link,
-    .hero-badge,
-    h2,
-    h3 {
-        line-height: 1.5;
-        padding-bottom: 0.1em;
+.social-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    /* Start empty */
+    height: 100%;
+    background: var(--color-accent-green);
+    transition: all 0.3s ease;
+    z-index: -1;
+}
+
+.social-btn:hover::before {
+    width: 100%;
+    /* Fill on hover */
+}
+
+/* =========================================
+   SEPARATED ICON STYLES (User Requested)
+   ========================================= */
+
+/* 1. DESKTOP ICONS (Visual settings) */
+.social-links-desktop .social-btn svg {
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+    width: 28px;
+    /* Desktop Size */
+    height: 28px;
+    fill: white;
+    transform: translateY(-4px);
+    /* Desktop Position */
+}
+
+/* 2. MOBILE ICONS (Visual settings) */
+.social-links-mobile .social-btn svg {
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+    width: 14px;
+    /* Mobile Size */
+    height: 14px;
+    fill: white;
+    transform: translateY(1px);
+    /* Mobile Position */
+}
+
+.social-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(84, 209, 110, 0.3);
+}
+
+/* Responsive Footer Phone Alignment */
+.footer-phone {
+    margin-bottom: 0.8rem;
+    color: rgba(255, 255, 255, 0.8);
+    direction: ltr;
+    text-align: right;
+    /* Desktop: Right aligned */
+}
+
+@media (max-width: 768px) {
+    .footer-phone {
+        text-align: center;
+        /* Mobile: Centered */
+    }
+
+    /* TOGGLE VISIBILITY: Show Mobile Block, Hide Desktop Block */
+    .social-links-desktop {
+        display: none !important;
+    }
+
+    .social-links-mobile {
+        display: flex !important;
+    }
+}
+
+@media (min-width: 769px) {
+
+    /* TOGGLE VISIBILITY: Hide Mobile Block on Desktop */
+    .social-links-mobile {
+        display: none !important;
+    }
+}
+
+/* Responsive Footer Background */
+.footer-custom-bg {
+    background: #0f1e4f;
+    /* Desktop: Primary Dark Blue (Lighter than the Gradient Black) */
+    color: white;
+    padding: 4rem 0 2rem;
+}
+
+@media (max-width: 768px) {
+    .footer-custom-bg {
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../../assets/images/hero_phone.jpg') center/cover no-repeat !important;
     }
 }
